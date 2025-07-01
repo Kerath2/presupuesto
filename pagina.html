@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presupuesto IBM Educate Perú</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: linear-gradient(135deg, #4a69bd 0%, #1e3799 100%);
+            color: white;
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            border-right: 1px solid #f0f0f0;
+        }
+
+        td:last-child {
+            border-right: none;
+        }
+
+        tr:hover {
+            background-color: #f8f9ff;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+
+        .category-row {
+            background: linear-gradient(135deg, #f1f2f6 0%, #ddd6fe 100%);
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .category-row td {
+            border-bottom: 2px solid #4a69bd;
+            font-size: 1.1rem;
+            padding: 18px 10px;
+        }
+
+        .subcategory-row {
+            background-color: #f7fafc;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .item-row td:first-child {
+            padding-left: 30px;
+            color: #2d3748;
+        }
+
+        .amount {
+            text-align: right;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .total-amount {
+            color: #e53e3e;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .summary h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .summary p {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .table-container {
+                padding: 15px;
+            }
+            
+            table {
+                font-size: 0.8rem;
+            }
+            
+            th, td {
+                padding: 8px 5px;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Presupuesto IBM Educate Perú</h1>
+            <p>Programa de Retorno de IBM a las Universidades Peruanas - Fase 1 (2025-2026)</p>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ítem</th>
+                        <th>Descripción</th>
+                        <th>Unidad</th>
+                        <th>Cantidad</th>
+                        <th>Valor Unitario USD</th>
+                        <th>Monto Total</th>
+                        <th>Monto Acumulado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="category-row highlight">
+                        <td></td>
+                        <td><strong>Regreso de IBM a las universidades</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount total-amount">$508,900</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Conseguir aprobación de la alta dirección IBM Perú</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">-</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>I01</td>
+                        <td>Elaboración plan de proyecto</td>
+                        <td>Semanas</td>
+                        <td class="amount">2</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>I02</td>
+                        <td>Elaboración de PoC (Client Engineering)</td>
+                        <td>Semanas</td>
+                        <td class="amount">4</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Elaboración plataforma IBM EDUCATE PERÚ</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$212,400</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Equipo Expert Labs (RRHH)</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$193,200</td>
+                        <td class="amount">$193,200</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>EL1</td>
+                        <td>Líder de proyecto/arquitecto senior</td>
+                        <td>Meses</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$3,000</td>
+                        <td class="amount">$36,000</td>
+                        <td class="amount">$36,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>EL2</td>
+                        <td>2 Desarrolladores backend (integración APIs, cloud, seguridad)</td>
+                        <td>Meses</td>
+                        <td class="amount">24</td>
+                        <td class="amount">$2,500</td>
+                        <td class="amount">$60,000</td>
+                        <td class="amount">$96,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>EL3</td>
+                        <td>2 Desarrolladores frontend (UX/UI, dashboards, integración)</td>
+                        <td>Meses</td>
+                        <td class="amount">24</td>
+                        <td class="amount">$2,200</td>
+                        <td class="amount">$52,800</td>
+                        <td class="amount">$148,800</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>EL4</td>
+                        <td>1 DevOps/Cloud Engineer (infraestructura, despliegue, automatización)</td>
+                        <td>Meses</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$2,800</td>
+                        <td class="amount">$33,600</td>
+                        <td class="amount">$182,400</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>EL5</td>
+                        <td>1 Diseñador UX/UI</td>
+                        <td>Meses</td>
+                        <td class="amount">6</td>
+                        <td class="amount">$1,800</td>
+                        <td class="amount">$10,800</td>
+                        <td class="amount">$193,200</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Licencias y productos</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$19,200</td>
+                        <td class="amount">$212,400</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>PD1</td>
+                        <td>IBM App Connect/IBM API Connect</td>
+                        <td>Meses</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$500</td>
+                        <td class="amount">$6,000</td>
+                        <td class="amount">$6,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>PD2</td>
+                        <td>IBM Cloud (créditos para desarrollo, almacenamiento, despliegue)</td>
+                        <td>Meses</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$400</td>
+                        <td class="amount">$4,800</td>
+                        <td class="amount">$10,800</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>PD3</td>
+                        <td>Red Hat OpenShift (licencia desarrollo/educación)</td>
+                        <td>Meses</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$300</td>
+                        <td class="amount">$3,600</td>
+                        <td class="amount">$14,400</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>PD4</td>
+                        <td>Acceso a IBM Quantum Network</td>
+                        <td>Meses</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$150</td>
+                        <td class="amount">$1,800</td>
+                        <td class="amount">$16,200</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>PD5</td>
+                        <td>Herramientas de colaboración (Figma, Github, Slack)</td>
+                        <td>Meses</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$250</td>
+                        <td class="amount">$3,000</td>
+                        <td class="amount">$19,200</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Programa de Embajadores IBM</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$165,000</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Recursos Humanos y compensación</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$144,000</td>
+                        <td class="amount">$144,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>EB1</td>
+                        <td>Compensación 15 embajadores</td>
+                        <td>Meses</td>
+                        <td class="amount">180</td>
+                        <td class="amount">$600</td>
+                        <td class="amount">$108,000</td>
+                        <td class="amount">$108,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>EB2</td>
+                        <td>Coordinador Nacional del programa</td>
+                        <td>Meses</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$2,000</td>
+                        <td class="amount">$24,000</td>
+                        <td class="amount">$132,000</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Capacitación</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$21,000</td>
+                        <td class="amount">$165,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>CP1</td>
+                        <td>Cursos y certificaciones IBM (watsonx, Red Hat, Z Systems, Qiskit) para 15 embajadores</td>
+                        <td>Meses</td>
+                        <td class="amount">15</td>
+                        <td class="amount">$800</td>
+                        <td class="amount">$12,000</td>
+                        <td class="amount">$12,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>CP2</td>
+                        <td>Workshops presenciales</td>
+                        <td>Eventos</td>
+                        <td class="amount">2</td>
+                        <td class="amount">$3,000</td>
+                        <td class="amount">$6,000</td>
+                        <td class="amount">$18,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>CP3</td>
+                        <td>Materiales didácticos y kits de bienvenida</td>
+                        <td>Cantidad</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$250</td>
+                        <td class="amount">$3,000</td>
+                        <td class="amount">$21,000</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Marketing</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$49,500</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Campañas digitales y contenido</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$27,500</td>
+                        <td class="amount">$27,500</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>MK1</td>
+                        <td>Publicidad digital (Google Ads, Meta, LinkedIn)</td>
+                        <td>Meses</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$1,200</td>
+                        <td class="amount">$14,400</td>
+                        <td class="amount">$14,400</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>MK2</td>
+                        <td>Producción de video promocional y testimonios</td>
+                        <td>Cantidad</td>
+                        <td class="amount">1</td>
+                        <td class="amount">$500</td>
+                        <td class="amount">$500</td>
+                        <td class="amount">$14,900</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>MK3</td>
+                        <td>Diseño gráfico, banners, materiales digitales</td>
+                        <td>Cantidad</td>
+                        <td class="amount">1</td>
+                        <td class="amount">$600</td>
+                        <td class="amount">$600</td>
+                        <td class="amount">$15,500</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>MK4</td>
+                        <td>Gestión de redes sociales y community management</td>
+                        <td>Meses</td>
+                        <td class="amount">12</td>
+                        <td class="amount">$1,000</td>
+                        <td class="amount">$12,000</td>
+                        <td class="amount">$27,500</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Activaciones y eventos presenciales</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$22,000</td>
+                        <td class="amount">$49,500</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>EV1</td>
+                        <td>Roadshow nacional (8 universidades)</td>
+                        <td>Cantidad</td>
+                        <td class="amount">8</td>
+                        <td class="amount">$2,000</td>
+                        <td class="amount">$16,000</td>
+                        <td class="amount">$16,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>EV2</td>
+                        <td>Material POP y kits promocionales</td>
+                        <td>Cantidad</td>
+                        <td class="amount">8</td>
+                        <td class="amount">$500</td>
+                        <td class="amount">$4,000</td>
+                        <td class="amount">$20,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>EV3</td>
+                        <td>Notas de prensa, gestión de medios, influencers STEM</td>
+                        <td>Cantidad</td>
+                        <td class="amount">1</td>
+                        <td class="amount">$2,000</td>
+                        <td class="amount">$2,000</td>
+                        <td class="amount">$22,000</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>SI adicionales: CRM y BI</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$57,000</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>CRM Salesforce</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$32,000</td>
+                        <td class="amount">$32,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>SF1</td>
+                        <td>Consultor Salesforce (custom objects, dashboards, integración)</td>
+                        <td>Meses</td>
+                        <td class="amount">6</td>
+                        <td class="amount">$2,500</td>
+                        <td class="amount">$15,000</td>
+                        <td class="amount">$15,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>SF2</td>
+                        <td>Desarrollador Salesforce (Apex, Lightning, integración APIs)</td>
+                        <td>Meses</td>
+                        <td class="amount">6</td>
+                        <td class="amount">$2,000</td>
+                        <td class="amount">$12,000</td>
+                        <td class="amount">$27,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>SF3</td>
+                        <td>Licencias adicionales Salesforce Education Cloud/Analytics</td>
+                        <td>Cantidad</td>
+                        <td class="amount">1</td>
+                        <td class="amount">$5,000</td>
+                        <td class="amount">$5,000</td>
+                        <td class="amount">$32,000</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>IBM Cognos BI</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$25,000</td>
+                        <td class="amount">$57,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>CG1</td>
+                        <td>Consultor BI/arquitecto de datos</td>
+                        <td>Meses</td>
+                        <td class="amount">4</td>
+                        <td class="amount">$3,000</td>
+                        <td class="amount">$12,000</td>
+                        <td class="amount">$12,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>CG2</td>
+                        <td>Desarrollador Cognos (ETL, dashboards, reportes)</td>
+                        <td>Meses</td>
+                        <td class="amount">4</td>
+                        <td class="amount">$2,000</td>
+                        <td class="amount">$8,000</td>
+                        <td class="amount">$20,000</td>
+                    </tr>
+                    
+                    <tr class="item-row">
+                        <td>CG3</td>
+                        <td>Licencias IBM Cognos Analytics</td>
+                        <td>Cantidad</td>
+                        <td class="amount">1</td>
+                        <td class="amount">$5,000</td>
+                        <td class="amount">$5,000</td>
+                        <td class="amount">$25,000</td>
+                    </tr>
+                    
+                    <tr class="subcategory-row">
+                        <td></td>
+                        <td><strong>Reserva Contingencia</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="amount">$25,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="summary">
+            <h2>Inversión Total del Proyecto</h2>
+            <p>USD $508,900</p>
+        </div>
+    </div>
+</body>
+</html>
